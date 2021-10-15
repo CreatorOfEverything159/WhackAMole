@@ -7,23 +7,48 @@
 </head>
 <body>
 
-<main class="main">
+<main class="container menu" id="mainPage">
 
     <div class="title">
         <h1 class="title__main">
             Welcome to the game "Whack a mole"!
         </h1>
         <h2 class="title__sub">
-            You can choose one of the levels to start playing!
+            Choose one of the modes to play!
         </h2>
     </div>
 
-    <div class="difficultyLevels">
-        <a href="" class="levelBtn easy">Easy</a>
-        <a href="" class="levelBtn medium">Medium</a>
-        <a href="" class="levelBtn hard">Hard</a>
+    <div class="modes">
+        <button
+                class="btn easy"
+                onclick="openPage(event, 'gamePage', EASY)"
+        >Easy</button>
+        <button
+                class="btn medium"
+                onclick="openPage(event, 'gamePage', MEDIUM)"
+        >Medium</button>
+        <button
+                class="btn hard"
+                onclick="openPage(event, 'gamePage', HARD)"
+        >Hard</button>
     </div>
 
+</main>
+
+<main class="container gamePage" id="gamePage">
+    <div class="field">
+        <div class="field__body" id="field">
+
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="btn"
+                onclick="openPage(event, 'mainPage')"
+                id="defaultOpen"
+        >Menu</button>
+        <button class="btn">Start</button>
+    </div>
 </main>
 
 <script src="src/js/main.js"></script>

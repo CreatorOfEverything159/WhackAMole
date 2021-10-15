@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;500;900&display=swap');
+
+/* reset */
+
 * {
     padding: 0;
     margin: 0;
@@ -5,17 +9,13 @@
     font-family: sans-serif;
 }
 
-a {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-}
-
 h1, h2 {
     display: block;
 }
 
-.main {
+/* main page */
+
+.menu, .gamePage {
     max-width: 1024px;
     margin: 0 auto;
     height: 100vh;
@@ -35,28 +35,37 @@ h1, h2 {
 
 .title .title__main {
     font-weight: 900;
+    font-family: 'Noto Sans Mono', monospace;
 }
 
 .title .title__sub {
-    font-weight: 500;
+    font-weight: 200;
+    font-family: 'Noto Sans Mono', monospace;
 }
 
-.difficultyLevels {
+.modes {
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.levelBtn {
-    width: 250px;
-    height: 80px;
+.btn {
+    width: 200px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px 0;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     text-transform: uppercase;
+    border-style: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 200;
+    font-size: 18px;
+    font-family: 'Noto Sans Mono', monospace;
+    border-radius: 5px;
 }
 
 .easy {
@@ -81,4 +90,29 @@ h1, h2 {
 
 .hard:hover {
     box-shadow: 0 0 5px #FF0000FF;
+}
+
+/* game Page */
+
+.field {
+    margin: 0 auto;
+}
+
+.field__body {
+    display: grid;
+    grid-gap: 5px;
+}
+
+.field__item {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
 }
