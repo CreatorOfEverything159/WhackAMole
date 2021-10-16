@@ -1,11 +1,17 @@
 const EASY = 'EASY'
 const MEDIUM = 'MEDIUM'
 const HARD = 'HARD'
+const screenWidth = 1024
+const gridGap = 5
 
 document.getElementById('defaultOpen').click()
 
 function createFieldItem(index) {
     return `<div class="field__item" data-index="${index}"></div>`
+}
+
+function getCellSize(fieldSize) {
+    return (screenWidth - (gridGap * (fieldSize - 1))) / fieldSize / 2 + 'px'
 }
 
 function createField(mode) {
@@ -29,7 +35,9 @@ function createField(mode) {
         fieldItems.push(createFieldItem(i))
     }
 
-    field.style.gridTemplate = `repeat(${fieldSize}, 1fr) / repeat(${fieldSize}, 1fr)`
+    let cellSize = getCellSize(fieldSize)
+
+    field.style.gridTemplate = `repeat(${fieldSize}, ${cellSize}) / repeat(${fieldSize}, ${cellSize})`
     field.innerHTML = fieldItems.join('')
 }
 
