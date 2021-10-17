@@ -5,15 +5,15 @@ const screenWidth = 1024
 const gridGap = 5
 let globalMode
 
-function createFieldItem(index) {
+const createFieldItem = (index) => {
     return `<div class="field__item" data-cell-index="${index}"></div>`
 }
 
-function getCellSize(fieldSize) {
+const getCellSize = (fieldSize) => {
     return (screenWidth - (gridGap * (fieldSize - 1))) / fieldSize / 2 + 'px'
 }
 
-function setFieldSize(mode) {
+const setFieldSize = (mode) => {
     switch (mode) {
         case EASY:
             return 3
@@ -24,7 +24,7 @@ function setFieldSize(mode) {
     }
 }
 
-function createField(mode) {
+const createField = (mode) => {
     globalMode = mode
     fieldSize = setFieldSize(mode)
     let field = document.getElementById('field')
@@ -40,7 +40,8 @@ function createField(mode) {
     field.innerHTML = fieldItems.join('')
 }
 
-function openPage(e, pageName, mode) {
+const openPage = (e, pageName, mode) => {
+    e.preventDefault()
     let tabContent = document.getElementsByClassName('container');
     for (let i = 0; i < tabContent.length; i++) {
         tabContent[i].style.display = 'none'
@@ -59,4 +60,11 @@ function openPage(e, pageName, mode) {
     }
 
     document.getElementById(pageName).style.display = 'flex'
+}
+
+const showResult = () => {
+    document.getElementById('pointsRes').innerText = pointsCounter
+    document.getElementById('allPoints').innerText = allMole
+    document.getElementById('gamePage').style.display = 'none'
+    document.getElementById('resultPage').style.display = 'flex'
 }

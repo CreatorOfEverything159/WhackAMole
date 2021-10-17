@@ -3,45 +3,63 @@ const stopBtn = document.getElementById('stopBtn')
 const menuBtn = document.getElementById('defaultOpen')
 const restartBtn = document.getElementById('restartBtn')
 const continueBtn = document.getElementById('continueBtn')
+const okBtn = document.getElementById('okBtn')
 
 startBtn.addEventListener('click', () => {
+    isActive = true
     startBtn.style.display = 'none'
     stopBtn.style.display = 'block'
-    // start time, points
+    globalTime = timerDefault
+    pointsCounter = 0
+    allMole = 0
 
-    isActive = true
+    if (globalMode === EASY) {
+        intervals.push(setMole(1000, 1000))
+    } else if (globalMode === MEDIUM) {
+        intervals.push(setMole(1500, randomInterval()))
+        intervals.push(setMole(1000, randomInterval()))
+    } else if (globalMode === HARD) {
+        intervals.push(setMole(1500, randomInterval()))
+        intervals.push(setMole(1000, randomInterval()))
+        intervals.push(setMole(2000, randomInterval()))
+    }
+    intervals.push(setTime())
 })
 
 stopBtn.addEventListener('click', () => {
+    isActive = false
     continueBtn.style.display = 'block'
     stopBtn.style.display = 'none'
     restartBtn.style.display = 'block'
-    // stop time
-
-    isActive = false
 })
 
 continueBtn.addEventListener('click', () => {
+    isActive = true
     startBtn.style.display = 'none'
     stopBtn.style.display = 'block'
     restartBtn.style.display = 'none'
     continueBtn.style.display = 'none'
-    // continue time
-
-    isActive = true
 })
 
 menuBtn.addEventListener('click', () => {
-    // restart time, points
-
     isActive = false
+    globalTime = timerDefault
+    pointsCounter = 0
+    intervalsCleaner(intervals)
 })
 
 restartBtn.addEventListener('click', () => {
-    openPage(event, 'gamePage', globalMode)
-    // restart time, points
-
     isActive = false
+    globalTime = timerDefault
+    pointsCounter = 0
+    intervalsCleaner(intervals)
+    openPage(event, 'gamePage', globalMode)
+})
+
+okBtn.addEventListener('click', () => {
+    restartBtn.click()
+    document.getElementById('resultPage').style.display = 'none'
+    document.getElementById('gamePage').style.display = 'flex'
 })
 
 menuBtn.click()

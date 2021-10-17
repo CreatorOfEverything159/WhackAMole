@@ -15,7 +15,7 @@ h1, h2 {
 
 /* main page */
 
-.menu, .gamePage {
+.menu, .gamePage, .resultPage {
     max-width: 1024px;
     margin: 0 auto;
     height: 100vh;
@@ -103,10 +103,18 @@ h1, h2 {
 }
 
 .field__item {
-    background-color: #ccc;
+    background-color: #000;
     padding: 20px;
     text-align: center;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background: url("../img/hole.png");*/
+}
+
+.field__item > img {
+    cursor: pointer;
 }
 
 .buttons {
@@ -114,4 +122,22 @@ h1, h2 {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+}
+
+.gameHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gameHeader__item, .result__item {
+    font-family: 'Noto Sans Mono', monospace;
+}
+
+.resultPage, .resBtns {
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    font-weight: 900;
 }
