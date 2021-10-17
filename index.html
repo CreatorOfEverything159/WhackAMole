@@ -21,14 +21,17 @@
     <div class="modes">
         <button
                 class="btn easy"
+                id="easyMode"
                 onclick="openPage(event, 'gamePage', EASY)"
         >Easy</button>
         <button
                 class="btn medium"
+                id="mediumMode"
                 onclick="openPage(event, 'gamePage', MEDIUM)"
         >Medium</button>
         <button
                 class="btn hard"
+                id="hardMode"
                 onclick="openPage(event, 'gamePage', HARD)"
         >Hard</button>
     </div>
@@ -36,21 +39,43 @@
 </main>
 
 <main class="container gamePage" id="gamePage">
+    <header class="gameHeader">
+        <div class="points" id="points"></div>
+        <div class="timer" id="timer"></div>
+    </header>
+
     <div class="field">
         <div class="field__body" id="field">
 
         </div>
     </div>
 
-    <div class="buttons">
-        <button class="btn"
+    <div class="buttons" id="buttons">
+        <button class="btn hard"
                 onclick="openPage(event, 'mainPage')"
                 id="defaultOpen"
         >Menu</button>
-        <button class="btn">Start</button>
+        <button
+                class="btn medium"
+                id="stopBtn"
+        >Stop</button>
+        <button
+                class="btn easy"
+                id="continueBtn"
+        >Continue</button>
+        <button
+                class="btn medium"
+                id="restartBtn"
+        >Restart</button>
+        <button
+                class="btn easy"
+                id="startBtn"
+        >Start</button>
     </div>
 </main>
 
+<script src="src/js/pages.js"></script>
+<script src="src/js/logic.js"></script>
 <script src="src/js/main.js"></script>
 </body>
 </html>

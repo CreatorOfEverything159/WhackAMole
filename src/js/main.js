@@ -1,57 +1,47 @@
-const EASY = 'EASY'
-const MEDIUM = 'MEDIUM'
-const HARD = 'HARD'
-const screenWidth = 1024
-const gridGap = 5
+const startBtn = document.getElementById('startBtn')
+const stopBtn = document.getElementById('stopBtn')
+const menuBtn = document.getElementById('defaultOpen')
+const restartBtn = document.getElementById('restartBtn')
+const continueBtn = document.getElementById('continueBtn')
 
-document.getElementById('defaultOpen').click()
+startBtn.addEventListener('click', () => {
+    startBtn.style.display = 'none'
+    stopBtn.style.display = 'block'
+    // start time, points
 
-function createFieldItem(index) {
-    return `<div class="field__item" data-index="${index}"></div>`
-}
+    isActive = true
+})
 
-function getCellSize(fieldSize) {
-    return (screenWidth - (gridGap * (fieldSize - 1))) / fieldSize / 2 + 'px'
-}
+stopBtn.addEventListener('click', () => {
+    continueBtn.style.display = 'block'
+    stopBtn.style.display = 'none'
+    restartBtn.style.display = 'block'
+    // stop time
 
-function createField(mode) {
-    let fieldSize = 0
-    let field = document.getElementById('field')
-    let fieldItems = []
+    isActive = false
+})
 
-    switch (mode) {
-        case EASY:
-            fieldSize = 3
-            break
-        case MEDIUM:
-            fieldSize = 5
-            break
-        case HARD:
-            fieldSize = 10
-            break
-    }
+continueBtn.addEventListener('click', () => {
+    startBtn.style.display = 'none'
+    stopBtn.style.display = 'block'
+    restartBtn.style.display = 'none'
+    continueBtn.style.display = 'none'
+    // continue time
 
-    for (let i = 0; i < fieldSize ** 2; i++) {
-        fieldItems.push(createFieldItem(i))
-    }
+    isActive = true
+})
 
-    let cellSize = getCellSize(fieldSize)
+menuBtn.addEventListener('click', () => {
+    // restart time, points
 
-    field.style.gridTemplate = `repeat(${fieldSize}, ${cellSize}) / repeat(${fieldSize}, ${cellSize})`
-    field.innerHTML = fieldItems.join('')
-}
+    isActive = false
+})
 
-function openPage(e, pageName, mode) {
-    let i, tabContent
+restartBtn.addEventListener('click', () => {
+    openPage(event, 'gamePage', globalMode)
+    // restart time, points
 
-    tabContent = document.getElementsByClassName('container');
-    for (i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = "none"
-    }
+    isActive = false
+})
 
-    if (mode) {
-        createField(mode)
-    }
-
-    document.getElementById(pageName).style.display = 'flex'
-}
+menuBtn.click()
