@@ -38,6 +38,7 @@ const setMole = (timeInterval, timeMole) => {
             allMole++
             setTimeout(() => {
                 randomCell.innerHTML = ''
+                randomCell.removeEventListener('click', onClickMole)
             }, timeMole)
         }
     }, timeInterval)
